@@ -18,11 +18,11 @@ class SRCNN(nn.Module):
 class FSRCNN(nn.Module):
     def __init__(self, numchannels=1):
         super(FSRCNN, self).__init__()
-        self.conv1 = nn.Conv2d(numchannels, 56, kernel_size=4, padding=5 // 2)
+        self.conv1 = nn.Conv2d(numchannels, 56, kernel_size=4, padding= 'same')
         self.conv2 = nn.Conv2d(56, 16, kernel_size=1)
-        self.conv3 = nn.Conv2d(16, 16, kernel_size=3, padding = 3 // 2)
+        self.conv3 = nn.Conv2d(16, 16, kernel_size=3, padding = 'same')
         self.conv4 = nn.Conv2d(16, 56, kernel_size=1)
-        self.conv5 = nn.Conv2d(56, 1, kernel_size=9, padding = 9//2)
+        self.conv5 = nn.Conv2d(56, 1, kernel_size=9, padding = 'same')
         self.relu = nn.ReLU(inplace=True)
     def forward(self, x):
         x = self.relu(self.conv1(x))
